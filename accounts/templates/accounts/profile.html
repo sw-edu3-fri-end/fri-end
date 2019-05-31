@@ -3,4 +3,11 @@
 
 <p>{{user.username}}</p>
 <p>{{user.profile}}</p>
+
+<a href="{% url 'accounts:edit'%}" class="btn amado-btn mb-15"> 회원정보 수정</a>
+<a href="{% url 'accounts:change_password'%}" class="btn amado-btn mb-15"> 비밀번호 변경</a>
+<form action = '{% url 'accounts:delete'%}' method = 'POST' style = 'display:inline;'>
+        {%csrf_token%}
+            <input type="submit" class="btn amado-btn mb-15" value="회원 탈퇴"/>
+        </form>
 {%endblock%}

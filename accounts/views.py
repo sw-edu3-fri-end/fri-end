@@ -49,6 +49,7 @@ def logout(request):
 def delete(request):
     if request.method=='POST':
         request.user.delete()
+        
     return redirect('Assignment:index')
 
 def edit(request):
