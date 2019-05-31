@@ -18,7 +18,7 @@ def signup(request):
         if form.is_valid():
             user = form.save()
             
-            profile = Profile(user=user.first_name)
+            profile = Profile(user=user)
             profile.save()
             auth_login(request, user, backend='allauth.account.auth_backends.AuthenticationBackend')
             return redirect('Assignment:index')
@@ -72,3 +72,5 @@ def change_password(request):
         form = PasswordChangeForm(request.user)
     return render(request,'accounts/auth_form.html',{'form':form})
     
+def pro_file(request):
+    return render(request,'accounts/profile.html')

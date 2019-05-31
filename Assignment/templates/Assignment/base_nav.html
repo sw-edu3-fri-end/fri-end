@@ -40,7 +40,7 @@
     <div class="cart-fav-search mb-100">
             
         {% if user.is_authenticated %}
-        <a href="{% url 'accounts:login'%}" class="cart-nav"><img src="{% static 'img/core-img/cart.png' %}" alt=""> {{user.username}}</a>
+        <a href="{% url 'accounts:profile'%}" class="cart-nav"><img src="{% static 'img/core-img/cart.png' %}" alt=""> {{user.username}}</a>
         <form action = '{% url 'accounts:logout'%}' method = 'POST' style = 'display:inline;'>
             {%csrf_token%}
             <input type="submit" class="cart-nav" value="로그아웃"/>
