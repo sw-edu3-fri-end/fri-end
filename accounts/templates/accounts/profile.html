@@ -2,11 +2,10 @@
 {% block body%}
 
 <div class="single-product-area mt-50">
-<p>{{user.username}}</p>
-<p>{{user.profile}}</p>
-        <h2>과제 등록란</h2>
+<p class = 'text-center'>{{user.profile}}</p>
+        <h2 class = 'text-center'>과제 등록란</h2>
         {% for assignment in assignments %}
-            <p>{{assignment.id}} <a href='{% url 'Assignment:detail' assignment.pk%}'> 제목 : {{assignment.title}}</a></p>
+            <p class = 'text-center'>{{assignment.id}} <a href='{% url 'Assignment:detail' assignment.pk%}'> 제목 : {{assignment.title}}</a></p>
             
         {%endfor%}
         <!--<h2>과제 참여란</h2>-->
@@ -15,11 +14,13 @@
             
         <!--{%endfor%}-->
         
-<a href="{% url 'accounts:edit'%}" class="btn amado-btn mb-15"> 회원정보 수정</a>
-<a href="{% url 'accounts:change_password'%}" class="btn amado-btn mb-15"> 비밀번호 변경</a>
+<a href="{% url 'accounts:edit'%}" class="container  mt-10 btn amado-btn mb-15"> 회원정보 수정</a>
+<hr>
+<a href="{% url 'accounts:change_password'%}" class="container  mt-10 btn amado-btn mb-15"> 비밀번호 변경</a>
+<hr>
 <form action = '{% url 'accounts:delete'%}' method = 'POST' style = 'display:inline;'>
         {%csrf_token%}
-            <input type="submit" class="btn amado-btn mb-15" value="회원 탈퇴"/>
+            <input type="submit" class="container  mt-10 btn amado-btn mb-15" value="회원 탈퇴"/>
         </form>
 
 </div>

@@ -20,6 +20,7 @@ def signup(request):
             
             profile = Profile(user=user)
             profile.save()
+            
             auth_login(request, user, backend='allauth.account.auth_backends.AuthenticationBackend')
             return redirect('Assignment:index')
     else :
