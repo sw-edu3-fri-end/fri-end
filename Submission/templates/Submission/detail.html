@@ -1,17 +1,60 @@
  {% extends 'Assignment/base.html' %}
 
 {% block body %}
+<div class="single-product-area mt-50">
+    <h1>(과제이름) 제출물 목록</h1>
+    <hr>
 
-<h1>과제이름 제출물 목록</h1>
-<hr>
-<br>
-<p>제목 : {{ submission.title }}</p>
-<p>내용 : {{ submission.content }}</p>
-<p>상태 : {{ submission.status }}</p>
-{% if submission.image %}
-<img src="{{ board.image.url }}" alt="{{ board.image }}"></img>
-{% endif %}
-<p>작성시각 : {{ submission.created_at }}</p>
-<p>마지막 수정 시각 : {{ submission.updated_at }}</p>
-<hr>
+    <!-- 제출물 내용 -->
+    <div>
+        <p>제목 : {{ submission.title }}</p>
+        <p>내용 : {{ submission.content }}</p>
+        <p>
+            상태 :
+            {% if submission.status == 'requested' %}
+            미검수
+            {% elif submission.status == 'succeed' %}
+            성공
+            {% elif submission.status == 'rejected' %}
+            실패
+            {% endif %}
+        </p>
+        {% if submission.image %}
+        <img src="{{ board.image.url }}" alt="{{ board.image }}"></img>
+        {% endif %}
+        <p>작성시각 : {{ submission.created_at }}</p>
+        <p>마지막 수정 시각 : {{ submission.updated_at }}</p>
+    </div>
+    <hr>
+
+    <!-- 검수 -->
+    <div>
+        <button type="button" class="btn btn-success">Success</button>
+        <button type="button" class="btn btn-danger">Reject</button>
+    </div>
+    <hr>
+
+    <!-- 댓글창 -->
+    <div>
+        <form action="" method='POST'>
+            {% csrf_token %}
+            댓글 달기 : <input type="text" name="content"/>
+            <input type="submit" value="Submit"/>
+        </form>
+
+        <p>
+<!--            {% for comment in comments %}-->
+<!--                <li>-->
+<!--                    {{ comment.content }}-->
+<!--                    <form action='' method='POST' style="display:inline">-->
+<!--                        {% csrf_token %}-->
+<!--                        <button>삭제</button>-->
+<!--                    </form>-->
+<!--                </li>-->
+<!--            {% empty %}-->
+                아직 댓글이 없습니다.
+<!--            {% endfor %}-->
+        </p>
+    </div>
+</div>
 {% endblock %}
