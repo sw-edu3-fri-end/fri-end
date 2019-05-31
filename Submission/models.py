@@ -1,7 +1,8 @@
 from django.db import models
+from django.conf import settings
 
 # Create your models here.
-import Assignment
+from Assignment.models import Assignment
 
 def submission_image_path(instance, filename):
     return f'submission/{filename}'
@@ -9,8 +10,8 @@ def submission_image_path(instance, filename):
 class Submission(models.Model):
     title = models.CharField(max_length=20)
     content = models.TextField()
-    # writer = models.ForeignKey(User, on_delete=models.CASCADE)
-    # assignment = models.ForeignKey(Assignment, on_delete=models.CASCADE)
+    writer = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    assignment = models.ForeignKey(Assignment, on_delete=models.CASCADE)
     image = models.ImageField(upload_to = submission_image_path, null=True)
     status = models.CharField(max_length=20)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -21,8 +22,8 @@ class Submission(models.Model):
 
 class Coaching(models.Model):
     content = models.TextField()
-    # writer = models.ForeignKey(User, on_delete=models.CASCADE)
-    # like_users = models.ManyToManyField(User, related_name='like_coachings', blank=True)
+    writer = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    like_users = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='like_coachings', blank=True)
     submission = models.ForeignKey(Submission, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
