@@ -1,7 +1,7 @@
 {% extends 'Assignment/base.html' %}
 {% block body%}
 {%load crispy_forms_tags %}
-
+<div class='single-product-area mt-50'>
 {%if request.resolver_match.url_name == 'signup'%}
 <h1 class = 'text-center'>회원가입</h1>
 {%elif request.resolver_match.url_name == 'edit'%}
@@ -19,6 +19,6 @@
     <input type="submit" value="Submit"/>
 </form>
 
-
+</div>
 
 {%endblock%}

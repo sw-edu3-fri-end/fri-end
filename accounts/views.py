@@ -74,4 +74,7 @@ def change_password(request):
     return render(request,'accounts/auth_form.html',{'form':form})
     
 def pro_file(request):
-    return render(request,'accounts/profile.html')
+    user = request.user
+    assignments = user.assignment_set.all()
+    # submissions = user.submission_set.all()
+    return render(request,'accounts/profile.html', {'assignments': assignments})
