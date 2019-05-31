@@ -1,0 +1,46 @@
+ {% extends 'Assignment/base.html' %}
+
+{% block body %}
+<div class="single-product-area">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 col-lg-7">
+                <div class="single_product_thumb">
+                    <div class="carousel slide" data-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <a class="gallery_img" href="img/product-img/pro-big-1.jpg">
+                                    <img class="d-block w-100" src="/static/img/media/{{ assignment.photo }}" alt="First slide">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-lg-5">
+                <div class="single_product_desc">
+                    <!-- Product Meta Data -->
+                    <div class="product-meta-data">
+                        <div class="line"></div>
+                        <p class="product-price">{{assignment.pay_coin}} Coin</p>
+                        <h3>{{assignment.title}}</h3>
+                    </div>
+
+                    <div class="short_overview my-5">
+                        <p>
+                            {{assignment.content}}
+                        </p>
+                    </div>
+
+                    <!-- Add to Cart Form -->
+                    <form class="cart clearfix" method="post">
+                        <button type="submit" name="addtocart" value="5" class="btn amado-btn">과제 신청</button>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
