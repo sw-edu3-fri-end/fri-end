@@ -7,7 +7,7 @@ class Submission(models.Model):
     title = models.CharField(max_length=20)
     content = models.TextField()
     # writer = models.ForeignKey(User, on_delete=models.CASCADE)
-    assignment = models.ForeignKey(Assignment, on_delete=models.CASCADE)
+    # assignment = models.ForeignKey(Assignment, on_delete=models.CASCADE)
     status = models.CharField(max_length=20)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
