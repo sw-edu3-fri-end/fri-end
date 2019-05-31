@@ -35,8 +35,8 @@ def new(request):
 def detail(request,pk):
     assignment = get_object_or_404(Assignment, pk=pk)
     assignmentUsers = AssignmentUser.objects.filter(assignment=pk)
+    checkAs = AssignmentUser.objects.filter(assignment=pk,user=request.user.pk)
     if (request.method == 'POST'):
-        checkAs = AssignmentUser.objects.filter(assignment=pk,user=request.user.pk)
         if(checkAs.exists()):
             messages.info(request, '이미 과제를 참여했습니다.')
             return redirect('Assignment:detail',assignment.pk)
@@ -47,11 +47,8 @@ def detail(request,pk):
         messages.info(request, '과제 참여완료')
         return redirect('Assignment:detail',assignment.pk)
     else:
-<<<<<<< HEAD
-        return render(request,'Assignment/detail.html',{'assignment':assignment,'count':assignmentUsers.count()})
-=======
         return render(request,'Assignment/detail.html',{
-                'assignment':assignment,
-                'count':assignmentUsers.count(),
-            })
->>>>>>> master
+            'assignment':assignment,
+            'count':assignmentUsers.count(),
+            'checkAs': checkAs
+        })

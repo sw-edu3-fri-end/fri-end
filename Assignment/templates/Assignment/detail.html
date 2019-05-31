@@ -31,12 +31,19 @@
                             {{assignment.content}}
                         </p>
                     </div>
+                    {% if checkAs %}
+                    <form class="cart clearfix" method="post">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-primary">과제 제출</button>
+                    </form>
+                    {% else %}
                     <form class="cart clearfix" method="post">
                         {% csrf_token %}
                         {% if user.is_authenticated %}
                         <button type="submit" class="btn amado-btn">과제 신청</button>
                         {% endif %}
                     </form>
+                    {% endif %}
                 </div>
             </div>
         </div>
