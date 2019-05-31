@@ -32,6 +32,7 @@ def create_coaching(request, submission_pk):
     submission = get_object_or_404(Submission, pk=submission_pk)
     if request.method == 'POST':
         content = request.POST.get('content')
-        coaching = Coaching(content=content, submission=submission)
+        writer = request.user
+        coaching = Coaching(content=content, submission=submission, writer=writer)
         coaching.save()
     return redirect('Submission:detail', submission_pk)

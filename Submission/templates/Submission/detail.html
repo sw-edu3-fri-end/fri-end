@@ -2,12 +2,12 @@
 
 {% block body %}
 <div class="single-product-area mt-50">
-    <h1>(과제이름) 제출물 목록</h1>
+    <h1>{{ submission.assignment.title }}<small class="text-muted">의 제출물 목록</small></h1>
     <hr>
 
     <!-- 제출물 내용 -->
     <div>
-        <p>제목 : {{ submission.title }}</p>
+        <h2>제목 : {{ submission.title }}</h2>
         <p>내용 : {{ submission.content }}</p>
         <p>
             상태 :
@@ -55,7 +55,7 @@
             <div class="mt-15">
                 <span class="lead">{{ coaching.content }}</span>
                 <div class="blockquote-footer">
-                    <span class="mr-15">(작성자이름)</span>
+                    <span class="mr-15">{{ coaching.writer.username }}</span>
                     <small class="text-muted">{{ coaching.created_at }}</small>
                 </div>
             </div>
