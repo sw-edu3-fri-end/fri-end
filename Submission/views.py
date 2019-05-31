@@ -17,7 +17,7 @@ def success(request, pk):
     submission =  get_object_or_404(Submission, pk=pk)
     user = request.user
     if request.method == 'POST':
-        if user.id == submission.writer.id:
+        if user.id == submission.assignment.created_user.id:
             profile = submission.writer.profile
             profile.points += 1
             submission.status = 'succeed'
@@ -30,7 +30,7 @@ def fail(request, pk):
     submission =  get_object_or_404(Submission, pk=pk)
     user = request.user
     if request.method == 'POST':
-        if user.id == submission.writer.id:
+        if user.id == submission.assignment.created_user.id:
             submission.status = 'failed'
             submission.save()
     return redirect('Submission:detail', pk)
