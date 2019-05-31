@@ -1,15 +1,17 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
+ {% extends 'Assignment/base.html' %}
 
-    {{ submission.title }}
+{% block body %}
 
-</body>
-</html>
+<h1>과제이름 제출물 목록</h1>
+<hr>
+<br>
+<p>제목 : {{ submission.title }}</p>
+<p>내용 : {{ submission.content }}</p>
+<p>상태 : {{ submission.status }}</p>
+{% if submission.image %}
+<img src="{{ board.image.url }}" alt="{{ board.image }}"></img>
+{% endif %}
+<p>작성시각 : {{ submission.created_at }}</p>
+<p>마지막 수정 시각 : {{ submission.updated_at }}</p>
+<hr>
+{% endblock %}
