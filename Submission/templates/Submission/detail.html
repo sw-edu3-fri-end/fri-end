@@ -15,12 +15,12 @@
             미검수
             {% elif submission.status == 'succeed' %}
             성공
-            {% elif submission.status == 'rejected' %}
+            {% elif submission.status == 'failed' %}
             실패
             {% endif %}
         </p>
         {% if submission.image %}
-        <img src="{{ board.image.url }}" alt="{{ board.image }}"></img>
+        <img src="{{ submission.image.url }}" alt="{{ submission.image }}"></img>
         {% endif %}
         <p>작성시각 : {{ submission.created_at }}</p>
         <p>마지막 수정 시각 : {{ submission.updated_at }}</p>
@@ -28,11 +28,20 @@
     <hr>
 
     <!-- 검수 -->
-    <div>
-        <button type="button" class="btn btn-success">Success</button>
-        <button type="button" class="btn btn-danger">Reject</button>
-    </div>
+    <!-- TODO: 해당 과제 등록자만 보이도록 수정 -->
+    {% if submission.status == 'requested' %}
+        <div>
+            <form action="{% url 'Submission:success' submission.pk %}" style="display: inline" method='POST'>
+                {% csrf_token %}
+                <input type="submit" class="btn btn-success" value="Success"/>
+            </form>
+            <form action="{% url 'Submission:fail' submission.pk %}" style="display: inline" method='POST'>
+                {% csrf_token %}
+                <input type="submit" class="btn btn-danger" value="Fail"/>
+            </form>
+        </div>
     <hr>
+    {% endif %}
 
     <!-- 댓글창 -->
     <div>
