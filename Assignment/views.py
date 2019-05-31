@@ -2,20 +2,32 @@ from django.shortcuts import render,redirect,get_object_or_404,HttpResponseRedir
 from .models import Assignment,AssignmentUser
 from .forms import AssignmentForm
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def index(request):
     assignment = Assignment.objects.all().order_by('-id')
     return render(request,'Assignment/index.html',{'assignment':assignment})
 
+@login_required
 def new(request):
     if(request.method == 'POST'):
         form = AssignmentForm(request.POST,request.FILES)
         if form.is_valid():
-            assignment = form.save(commit=False)
-            assignment.created_user = request.user
-            assignment.save()
-            return redirect('Assignment:index')
+            user = request.user
+            point = user.profile.points
+            if (point != 0):
+                points = point -1
+                user.profile.points = points
+                user.profile.save()
+                assignment = form.save(commit=False)
+                assignment.created_user = request.user
+                assignment.save()
+                return redirect('Assignment:detail',assignment.pk)
+            else:
+                messages.info(request, '포인트가 없습니다.')
+                return redirect('Assignment:index')
+        return redirect('Assignment:index')
     else:
         form = AssignmentForm()
     return render(request,'Assignment/form.html',{'form':form})

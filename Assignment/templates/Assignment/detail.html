@@ -10,7 +10,7 @@
                         <div class="carousel-inner">
                             <div class="carousel-item active">
                                 <a class="gallery_img" href="img/product-img/pro-big-1.jpg">
-                                    <img class="d-block w-100" src="/static/img/media/{{ assignment.photo }}" alt="First slide">
+                                    <img class="d-block w-100" src="/media/{{ assignment.photo }}" onerror="this.src='/static/img/bg-img/no_detail_img.gif'" alt="First slide">
                                 </a>
                             </div>
                         </div>
@@ -33,7 +33,9 @@
                     </div>
                     <form class="cart clearfix" method="post">
                         {% csrf_token %}
+                        {% if user.is_authenticated %}
                         <button type="submit" class="btn amado-btn">과제 신청</button>
+                        {% endif %}
                     </form>
                 </div>
             </div>
