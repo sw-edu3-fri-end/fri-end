@@ -25,12 +25,24 @@ SECRET_KEY = '%%3jwyd-244q+kml5omq=*equz_wm+jq3%3qc6*6f_w0=)xei9'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['python-practice1-popor628.c9users.io']
 
 
 # Application definition
 
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+    )
+
+
 INSTALLED_APPS = [
+    'bootstrap4',
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.kakao',
     'crispy_forms',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -41,8 +53,16 @@ INSTALLED_APPS = [
     'django_extensions',
     'Assignment',
     'Submission',
+    'accounts',
 ]
+
+
+SITE_ID = 1
+
+LOGIN_REDIRECT_URL = 'Assignment:index'
+
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
