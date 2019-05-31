@@ -45,7 +45,7 @@
 
     <!-- 댓글창 -->
     <div>
-        <form action="" method='POST'>
+        <form action="{% url 'Submission:create_coaching' submission.pk %}" method='POST'>
             {% csrf_token %}
             댓글 달기 : <input type="text" name="content"/>
             <input type="submit" value="Submit"/>
@@ -64,7 +64,8 @@
 <!--                        <button>삭제</button>-->
 <!--                    </form>-->
             {% empty %}
-                <span>아직 아무도 훈수를 두지 않았습니다. 훈수를 통해 피드백을 주세요!</span>
+            <br>
+            <span>아직 아무도 훈수를 두지 않았습니다. 훈수를 통해 피드백을 주세요!</span>
             {% endfor %}
         </div>
     </div>
