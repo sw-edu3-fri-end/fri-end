@@ -2,22 +2,25 @@
 {%block body%}
 {% load bootstrap4%}
 {% load socialaccount%}
-<div class="container single-product-area mt-50">
+<div class="container single-product-area mt-100">
     
     <h1 class = 'text-center'> 로그인</h1>
 <form action='' method = 'POST'>
     {%csrf_token%}
     {% bootstrap_form form %}
     {% buttons%}
-        <button type = 'submit' class = 'btn btn-warning'>
+        <hr>
+        <button type = 'submit' class = 'container  mt-10 btn btn-warning'>
             로그인
         </button>
-        <button type = 'submit' class = 'btn btn-warning'>
+        <hr>
+        <button type = 'submit' class = 'container mt-10 btn btn-warning'>
             취소
         </button>
     {%endbuttons%}
 </form>
-<a href = "{% provider_login_url 'kakao' method = 'outh2' %}" class = 'btn btn-warning'> KaKao Login</a>
+<hr>
+<a href = "{% provider_login_url 'kakao' method = 'outh2' %}" class = 'container mt-10 btn btn-warning'> KaKao Login</a>
     
 </div>
 
