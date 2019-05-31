@@ -1,9 +1,11 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from .models import Assignment
 from .forms import AssignmentForm
+from .models import Profile
 
 # Create your views here.
 def index(request):
+    # profiles = Profile.objects.all()[::-1]
     assignment = Assignment.objects.all().order_by('-id')
     return render(request,'Assignment/index.html',{'assignment':assignment})
 
