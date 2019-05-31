@@ -24,23 +24,28 @@
                         <div class="line"></div>
                         <p class="product-price">{{assignment.pay_coin}} Coin</p>
                         <h3>{{assignment.title}}</h3>
+                        <p class="avaibility"><i class="fa fa-circle"></i> 과제 참여자: {{count}}</p>
                     </div>
-
                     <div class="short_overview my-5">
                         <p>
                             {{assignment.content}}
                         </p>
                     </div>
-
-                    <!-- Add to Cart Form -->
                     <form class="cart clearfix" method="post">
-                        <button type="submit" name="addtocart" value="5" class="btn amado-btn">과제 신청</button>
+                        {% csrf_token %}
+                        <button type="submit" class="btn amado-btn">과제 신청</button>
                     </form>
-
                 </div>
             </div>
         </div>
     </div>
 </div>
+{% if messages %}
+    {% for message in messages %}
+        <script>
+            alert('{{ message }}');
+        </script>
+    {% endfor %}
+{% endif %}
 
 {% endblock %}
