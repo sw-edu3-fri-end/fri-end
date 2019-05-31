@@ -27,12 +27,14 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['python-practice1-popor628.c9users.io']
 
+
+# Application definition
+
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
     'allauth.account.auth_backends.AuthenticationBackend',
     )
 
-# Application definition
 
 INSTALLED_APPS = [
     'bootstrap4',
@@ -50,11 +52,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_extensions',
     'Assignment',
-<<<<<<< Updated upstream
     'Submission',
-=======
     'accounts',
->>>>>>> Stashed changes
 ]
 
 
