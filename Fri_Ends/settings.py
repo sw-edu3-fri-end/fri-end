@@ -25,7 +25,7 @@ SECRET_KEY = '%%3jwyd-244q+kml5omq=*equz_wm+jq3%3qc6*6f_w0=)xei9'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['python-practice1-popor628.c9users.io']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -146,6 +146,6 @@ STATICFILES_DIRS=[
     os.path.join(BASE_DIR,'static'),
 ]
 
-MEDIA_URL = '/static/img/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'static/img/media')
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
