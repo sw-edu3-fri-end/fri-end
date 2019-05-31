@@ -44,3 +44,13 @@ def create_coaching(request, submission_pk):
         coaching = Coaching(content=content, submission=submission, writer=writer)
         coaching.save()
     return redirect('Submission:detail', submission_pk)
+
+@login_required
+def like_coaching(request, submission_pk, coaching_pk):
+    coaching = get_object_or_404(Coaching, pk=coaching_pk)
+    user = request.user
+    if coaching.like_users.filter(pk=user.pk).exists():
+        coaching.like_users.remove(user)
+    else:
+        coaching.like_users.add(user)
+    return redirect('Submission:detail', submission_pk)
