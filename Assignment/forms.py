@@ -1,12 +1,12 @@
 from django import forms
 from .models import Assignment
 from crispy_forms.helper import FormHelper
-from crispy_forms.layout import Submit
+from crispy_forms.layout import Submit,Layout
 
 class AssignmentForm(forms.ModelForm):
     class Meta:
         model = Assignment
-        fields = ['title','content','photo','pay_coin','end_at',]
+        fields = ['title','content','photo','end_at',]
 
     def __init__(self,*args,**kwargs):
         super().__init__(*args,**kwargs)

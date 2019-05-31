@@ -6,11 +6,11 @@
         {% for item in assignment %}
             <div class="single-products-catagory clearfix">
                 <a href="{{item.pk}}">
-                    <img src="/static/img/media/{{ item.photo }}" alt="">
+                    <img src="/media/{{ item.photo }}" alt="이미지없음" onerror="this.src='/static/img/bg-img/no_detail_img.gif'" style="width: 368px; height: 368px;">
                     <!-- Hover Content -->
                     <div class="hover-content">
                         <div class="line"></div>
-                        <p>From {{item.pay_coin}}</p>
+                        <p>마감일 {{item.end_at}}</p>
                         <h4>{{item.title}}</h4>
                     </div>
                 </a>
@@ -18,4 +18,11 @@
         {% endfor %}
     </div>
 </div>
+{% if messages %}
+    {% for message in messages %}
+        <script>
+            alert('{{ message }}');
+        </script>
+    {% endfor %}
+{% endif %}
 {% endblock %}

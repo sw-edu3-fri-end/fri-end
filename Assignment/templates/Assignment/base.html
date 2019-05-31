@@ -10,26 +10,34 @@
     <link rel="stylesheet" href="{% static 'css/core-style.css' %}">
     <link rel="stylesheet" href="{% static 'style.css' %}">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/datepicker.css' %}">
     {% block css %} {% endblock %}
 </head>
 <body>
-    <div class="main-content-wrapper d-flex clearfix">
+<!-- ##### jQuery (Necessary for All JavaScript Plugins) ##### -->
+    <script src="{% static 'js/jquery/jquery-2.2.4.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap-datepicker.js' %}" charset="UTF-8"></script>
+<div class="main-content-wrapper d-flex clearfix">
         <!-- Nav -->
         {% include 'Assignment/base_nav.html' %}
         <!-- endNav-->
         <!-- Contents -->
+<<<<<<< HEAD
        
         {% block body %}
         {% endblock %}
         
+=======
+        {% block body %}
+        {% endblock %}
+>>>>>>> yk1
         <!-- endContents -->
     </div>
 
     <!-- Footer -->
     {% include 'Assignment/base_footer.html' %}
 
-    <!-- ##### jQuery (Necessary for All JavaScript Plugins) ##### -->
-    <script src="{% static 'js/jquery/jquery-2.2.4.min.js' %}"></script>
+
     <!-- Popper js -->
     <script src="{% static 'js/popper.min.js' %}"></script>
     <!-- Bootstrap js -->
