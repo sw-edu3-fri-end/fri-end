@@ -1,4 +1,7 @@
 
+# virtual env (Windows)
+Scripts/
+
 # Created by https://www.gitignore.io/api/django,python,pycharm
 # Edit at https://www.gitignore.io/?templates=django,python,pycharm
 
