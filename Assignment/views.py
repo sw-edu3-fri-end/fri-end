@@ -50,7 +50,8 @@ def detail(request,pk):
         return render(request,'Assignment/detail.html',{
             'assignment':assignment,
             'count':assignmentUsers.count(),
-            'checkAs': checkAs
+            'checkAs': checkAs,
+            'submissions': assignment.submission_set.all()
         })
 
 @login_required
@@ -62,6 +63,7 @@ def submit(request, pk):
             submission = form.save(commit=False)
             submission.writer = request.user
             submission.assignment = assignment
+            submission.status = 'requested'
             submission.save()
             return redirect('Assignment:detail', assignment.pk)
         else:

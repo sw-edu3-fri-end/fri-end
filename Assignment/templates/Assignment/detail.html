@@ -5,7 +5,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-12 col-lg-7">
-                <div class="single_product_thumb">
+                <div class="single_product_thumb" style="margin-bottom:0">
                     <div class="carousel slide" data-ride="carousel">
                         <div class="carousel-inner">
                             <div class="carousel-item active">
@@ -43,6 +43,39 @@
                     {% endif %}
                 </div>
             </div>
+
+            <table class="table">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">제목</th>
+                  <th scope="col">작성자</th>
+                  <th scope="col">상태</th>
+                  <th scope="col">제출일자</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for submission in submissions %}
+                <tr>
+                  <th scope="row">{{submission.id}}</th>
+                  <td>{{submission.title}}</td>
+                  <td>{{submission.writer.username}}</td>
+                  <td>
+                    {% if submission.status == 'requested' %}
+                    미검수
+                    {% elif submission.status == 'succeed' %}
+                    성공
+                    {% elif submission.status == 'failed' %}
+                    실패
+                    {% endif %}
+                  </td>
+                  <td>{{submission.created_at}}</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+
+
         </div>
     </div>
 </div>
