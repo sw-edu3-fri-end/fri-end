@@ -18,3 +18,14 @@ class Submission(models.Model):
 
     def __str__(self):
         return f'[{self.pk}] {self.title}'
+
+class Coaching(models.Model):
+    content = models.TextField()
+    # writer = models.ForeignKey(User, on_delete=models.CASCADE)
+    # like_users = models.ManyToManyField(User, related_name='like_coachings', blank=True)
+    submission = models.ForeignKey(Submission, on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return f'[{self.submission.title} - {self.pk}] {self.content}'

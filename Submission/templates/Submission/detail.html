@@ -45,25 +45,29 @@
 
     <!-- 댓글창 -->
     <div>
-        <form action="" method='POST'>
+        <form action="{% url 'Submission:create_coaching' submission.pk %}" method='POST'>
             {% csrf_token %}
             댓글 달기 : <input type="text" name="content"/>
             <input type="submit" value="Submit"/>
         </form>
-
-        <p>
-<!--            {% for comment in comments %}-->
-<!--                <li>-->
-<!--                    {{ comment.content }}-->
+        <div>
+            {% for coaching in coachings %}
+            <div class="mt-15">
+                <span class="lead">{{ coaching.content }}</span>
+                <div class="blockquote-footer">
+                    <span class="mr-15">(작성자이름)</span>
+                    <small class="text-muted">{{ coaching.created_at }}</small>
+                </div>
+            </div>
 <!--                    <form action='' method='POST' style="display:inline">-->
 <!--                        {% csrf_token %}-->
 <!--                        <button>삭제</button>-->
 <!--                    </form>-->
-<!--                </li>-->
-<!--            {% empty %}-->
-                아직 댓글이 없습니다.
-<!--            {% endfor %}-->
-        </p>
+            {% empty %}
+            <br>
+            <span>아직 아무도 훈수를 두지 않았습니다. 훈수를 통해 피드백을 주세요!</span>
+            {% endfor %}
+        </div>
     </div>
 </div>
 {% endblock %}
