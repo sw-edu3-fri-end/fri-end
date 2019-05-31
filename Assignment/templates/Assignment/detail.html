@@ -9,8 +9,8 @@
                     <div class="carousel slide" data-ride="carousel">
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                                <a class="gallery_img" href="img/product-img/pro-big-1.jpg">
-                                    <img class="d-block w-100" src="/media/{{ assignment.photo }}" onerror="this.src='/static/img/bg-img/no_detail_img.gif'" alt="First slide">
+                                <a class="gallery_img" href="/media/{{ assignment.photo }}">
+                                    <img class="d-block w-100" src="/media/{{ assignment.photo }}" onerror="this.src='/static/img/bg-img/no_detail_img.gif'" alt="First slide" style="width: 573px; height: 592px;">
                                 </a>
                             </div>
                         </div>
@@ -22,7 +22,7 @@
                     <!-- Product Meta Data -->
                     <div class="product-meta-data">
                         <div class="line"></div>
-                        <p class="product-price">{{assignment.pay_coin}} Coin</p>
+                        <p class="product-price">마감일 : {{assignment.end_at}}</p>
                         <h3>{{assignment.title}}</h3>
                         <p class="avaibility"><i class="fa fa-circle"></i> 과제 참여자: {{count}}</p>
                     </div>

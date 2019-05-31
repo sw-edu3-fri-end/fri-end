@@ -6,5 +6,12 @@
     <h1>과제 등록</h1>
     {% crispy form %}
 </div>
-
+<script>
+    $(function(){
+        $('.datetimeinput').datepicker({
+            format: 'mm/dd/yyyy',
+            startDate: '-3d'
+        });
+    })
+</script>
 {% endblock %}
