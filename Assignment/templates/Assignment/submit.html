@@ -1,0 +1,9 @@
+ {% extends 'Assignment/base.html' %}
+
+{% block body %}
+{% load crispy_forms_tags %}
+<div class="single-product-area mt-50">
+    <h1>과제 제출</h1>
+    {% crispy form %}
+</div>
+{% endblock %}

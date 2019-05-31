@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from .models import Assignment,AssignmentUser
-from .forms import AssignmentForm
+from .forms import AssignmentForm, SubmissionForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
@@ -52,3 +52,21 @@ def detail(request,pk):
             'count':assignmentUsers.count(),
             'checkAs': checkAs
         })
+
+@login_required
+def submit(request, pk):
+    assignment = get_object_or_404(Assignment, pk=pk)
+    if (request.method == 'POST'):
+        form = SubmissionForm(request.POST, request.FILES)
+        if form.is_valid():
+            submission = form.save(commit=False)
+            submission.writer = request.user
+            submission.assignment = assignment
+            submission.save()
+            return redirect('Assignment:detail', assignment.pk)
+        else:
+            messages.info(request, '제출 실패')
+            return redirect('Assignment:detail', assignment.pk)
+    else:
+        form = SubmissionForm()
+    return render(request, 'Assignment/submit.html', {'form':form})

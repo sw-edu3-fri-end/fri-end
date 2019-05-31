@@ -32,10 +32,7 @@
                         </p>
                     </div>
                     {% if checkAs %}
-                    <form class="cart clearfix" method="post">
-                        {% csrf_token %}
-                        <button type="submit" class="btn btn-primary">과제 제출</button>
-                    </form>
+                        <a href="{% url 'Assignment:submit' assignment.pk %}" class="btn btn-primary">과제 제출</a>
                     {% else %}
                     <form class="cart clearfix" method="post">
                         {% csrf_token %}
