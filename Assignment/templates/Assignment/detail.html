@@ -58,7 +58,7 @@
                 {% for submission in submissions %}
                 <tr>
                   <th scope="row">{{submission.id}}</th>
-                  <td>{{submission.title}}</td>
+                  <td><a href="{% url 'Submission:detail' submission.pk %}">{{submission.title}}</a></td>
                   <td>{{submission.writer.username}}</td>
                   <td>
                     {% if submission.status == 'requested' %}
